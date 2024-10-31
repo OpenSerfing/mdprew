@@ -7,7 +7,7 @@ function markdownToHtml(markdown) {
     markdown = markdown.replace(/^## (.*$)/gim, '<h2>$1</h2>');
     markdown = markdown.replace(/^# (.*$)/gim, '<h1>$1</h1>');
 
-    // Заменяем жирный текст
+    // Заменяем жирный и курсивный текст
     markdown = markdown.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     markdown = markdown.replace(/\*(.*?)\*/g, '<em>$1</em>');
 
@@ -20,10 +20,10 @@ function markdownToHtml(markdown) {
 
 document.addEventListener("DOMContentLoaded", function() {
     const markdownInput = document.getElementById("markdown-input");
-    const htmlOutput = document.getElementById("html-output");
+    const markdownPreview = document.getElementById("markdown-preview");
 
     markdownInput.addEventListener("input", function() {
         const markdownText = markdownInput.value;
-        htmlOutput.innerHTML = markdownToHtml(markdownText);
+        markdownPreview.innerHTML = markdownToHtml(markdownText);
     });
 });
